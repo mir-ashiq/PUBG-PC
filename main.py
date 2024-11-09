@@ -7,8 +7,11 @@ PAGE_ACCESS_TOKEN = os.getenv('PAGE_ACCESS_TOKEN')
 PAGE_ID = os.getenv('PAGE_ID')
 VIDEO_DIRECTORY = os.getenv('VIDEO_DIRECTORY')
 
+print(PAGE_ACCESS_TOKEN)
+print(PAGE_ID)
+print(VIDEO_DIRECTORY)
 
-def upload_reel_to_facebook(video_path, description):
+def upload_reel_to_facebook(PAGE_ACCESS_TOKEN, PAGE_ID, video_path, description):
 
     url = f"https://graph.facebook.com/v21.0/{PAGE_ID}/video_reels"
     
@@ -26,6 +29,7 @@ def upload_reel_to_facebook(video_path, description):
     else:
         print("Failed to upload video")
         print("Response:", response.json())
+        return
     
     upload_url = f"https://rupload.facebook.com/video-upload/v21.0/{video_id}"
 
@@ -64,7 +68,7 @@ def upload_reel_to_facebook(video_path, description):
 
 if __name__ == "__main__":
     
-    VIDEO_PATH = 'path_to_your_video.mp4'
-    DESCRIPTION = 'Your video description'
+    VIDEO_PATH = f"{VIDEO_DIRECTORY}/pubgpc-1.mp4"
+    DESCRIPTION = 'PUBG PC Gameplay #pubg #pubgpc #pubggameplay #pubgpcgameplay #pubgmobile #pubg #bgmi '
 
-    upload_reel_to_facebook(VIDEO_PATH, DESCRIPTION)
+    upload_reel_to_facebook(PAGE_ACCESS_TOKEN, PAGE_ID, VIDEO_PATH, DESCRIPTION)
