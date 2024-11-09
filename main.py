@@ -35,8 +35,8 @@ def upload_reel_to_facebook(PAGE_ACCESS_TOKEN, PAGE_ID, video_path, description)
 
     headers = {
         'Authorization': f'OAuth {PAGE_ACCESS_TOKEN}',
-        'offset': 0,
-        'file_size': os.path.getsize(video_path),
+        'offset': '0',
+        'file_size': str(os.path.getsize(video_path)),
     }
     with open(video_path, 'rb') as video_file:
         upload_response = requests.post(upload_url, headers=headers, data=video_file)
